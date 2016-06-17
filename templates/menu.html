@@ -1,12 +1,30 @@
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    Cras justo odio
+<div id="menu" class="list-group">
+  <a href="pages/index.html" class="list-group-item active">
+    Home
   </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
+  <a href="pages/page1.html" class="list-group-item">About</a>
+  <a href="pages/page2.html" class="list-group-item">Contact</a>
+  <a href="pages/page3.html" class="list-group-item">Other Links</a>
+  
 </div>
 
 
 <script src="js/test.js"></script>
+
+
+<script>
+    $('#menu a').click(function (e) {
+        e.preventDefault();
+        var path = $(this).prop('href');
+        var container = document.getElementById('view');
+        partial.getPage(path, container, function (elem) {
+            Prism.highlightAll();
+        });
+        $('.active').removeClass('active');
+        $(this).addClass('active');
+
+    });
+    $('#menu a')[0].click();
+
+
+</script>
