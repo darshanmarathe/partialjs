@@ -10,7 +10,7 @@ Partial JS
 
   
 
-        <partial src="templates/header.html"></partial> 
+ <partial src="templates/header.html"></partial> 
 
 or
 
@@ -18,6 +18,5 @@ or
 
  - Simple to use 
  - can do what ng-include dose but without angular
-
-3kb normal side
-2kb minified 
+ - 3kb normal side 
+ - 2kb minified
