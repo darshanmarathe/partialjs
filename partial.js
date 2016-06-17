@@ -18,7 +18,6 @@ var partial = (function () {
                         eval(scripts[ix].text);
                 }
                 if (callback !== undefined) {
-                    /*handles foundation initialization*/
                     callback(elem);
                 }
             }

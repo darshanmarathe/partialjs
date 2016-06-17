@@ -2,9 +2,9 @@
   "name": "partialjs",
   "version": "1.0.0",
   "description": "Partial JS\r ----------",
-  "main": "partial.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/darshanmarathe/partialjs#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "http-server": "^0.9.0"
   }
 }
