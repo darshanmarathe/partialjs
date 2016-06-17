@@ -5,13 +5,10 @@ Partial JS
  2. Simple declarative syntax.
  3. Support Inline JS Inside template
  4. Support Script Tags with Src Attribute
-
-
-
   
 
-    <partial src="templates/header.html"></partial> 
 
+    <partial src="templates/header.html"></partial> 
 or
 
     <partial src="templates/footer.html" onload="Footerloaded"></partial>
