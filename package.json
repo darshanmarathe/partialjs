@@ -1,0 +1,22 @@
+{
+  "name": "partialjs",
+  "version": "1.0.0",
+  "description": "Partial JS\r ----------",
+  "main": "partial.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darshanmarathe/partialjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darshanmarathe/partialjs/issues"
+  },
+  "homepage": "https://github.com/darshanmarathe/partialjs#readme",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}

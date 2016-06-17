@@ -20,3 +20,9 @@ or
  - can do what ng-include dose but without angular
  - 3kb normal side 
  - 2kb minified
+
+
+ How to use ?
+
+ npm install 
+ run 
