@@ -18,7 +18,7 @@
         var path = $(this).prop('href');
         var container = document.getElementById('view');
         partial.getPage(path, container, function (elem) {
-            Prism.highlightAll();
+           console.log(path + ' loaded');
         });
         $('.active').removeClass('active');
         $(this).addClass('active');

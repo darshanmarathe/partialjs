@@ -1,11 +1,14 @@
 Partial JS
 ----------
 
+__[demo](https://partialjs.herokuapp.com/)__
+
  1. A ng-include replacement 
  2. Simple declarative syntax.
  3. Support Inline JS Inside template
  4. Support Script Tags with Src Attribute
- 5. Zero dependencies 
+ 5. Zero dependencies
+
   
 
 ```
