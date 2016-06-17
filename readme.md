@@ -5,6 +5,7 @@ Partial JS
  2. Simple declarative syntax.
  3. Support Inline JS Inside template
  4. Support Script Tags with Src Attribute
+ 5. Zero dependencies 
   
 
 ```
@@ -25,4 +26,5 @@ or
  How to use ?
 
  npm install 
- run 
+
+ run.bat 
