@@ -8,6 +8,7 @@ __[demo](https://partialjs.herokuapp.com/)__
  3. Support Inline JS Inside template
  4. Support Script Tags with Src Attribute
  5. Zero dependencies
+ 6. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
 
   
 
