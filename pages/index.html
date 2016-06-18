@@ -22,33 +22,50 @@ Partial JS
 
 </ul>
 <code>
-    <partial src="templates/header.html"></partial>
+  <h2>  Simple example </h2>
+
+    &lt;partial src=&quot;templates/header.html&quot;&gt;&lt;/partial&gt;
 
 <code>
-or
+    </br>
+
 <code>
-    <partial src="templates/footer.html" onload="Footerloaded"></partial>
+
+ <h2>   Example with onload method</h2>
+
+     &lt;partial src=&quot;templates/footer.html&quot; onload=&quot;Footerloaded&quot;&gt;&lt;/partial&gt;
 </code>
-More complex
-
+</br>
 <code>
-HTML
+   <h2> NoScript attribute example </h2>
 
-    <div id="menu" class="list-group">
-    <a href="pages/index.html" class="list-group-item active">
+      &lt;partial src=&quot;templates/header.html&quot; noscript=&quot;true&quot;&gt;&lt;/partial&gt;
+
+  &lt;partial src=&quot;templates/header.html&quot; noscript&gt;&lt;/partial&gt;
+
+</code>
+</br>
+More complex example with manual loading of pages with javascript
+</br>
+<code>
+<h2>HTML</h2>
+<pre>
+
+    &lt;div id=&quot;menu&quot; class=&quot;list-group&quot;&gt; 
+    &lt;a href=&quot;pages/index.html&quot; class=&quot;list-group-item active&quot;&gt;
         Home
-    </a>
-    <a href="pages/page1.html" class="list-group-item">About</a>
-    <a href="pages/page2.html" class="list-group-item">Contact</a>
-    <a href="pages/page3.html" class="list-group-item">Other Links</a>
+    &lt;/a&gt;
+    &lt;a href=&quot;pages/page1.html&quot; class=&quot;list-group-item&quot;&gt;About&lt;/a&gt;
+    &lt;a href=&quot;pages/page2.html&quot; class=&quot;list-group-item&quot;&gt;Contact&lt;/a&gt;
+    &lt;a href=&quot;pages/page3.html&quot; class=&quot;list-group-item&quot;&gt;Other Links&lt;/a&gt;
 
-    </div>
-
+    &lt;/div&gt;
+</pre>
 </code>
 <code>
 
-JAVASCRIPT
-
+<h2>JAVASCRIPT</h2>
+<pre>
     $('#menu a').click(function (e) {
         e.preventDefault();
         var path = $(this).prop('href');
@@ -60,13 +77,15 @@ JAVASCRIPT
         $(this).addClass('active');
 
     });
+
+</pre>
 </code>
 
-How to use ?
+How to use ? </br>
 
-npm install
-npm start
+npm install  </br>
+npm start </br>
 
-or 
+or </br>
 
 run.bat
