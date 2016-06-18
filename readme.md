@@ -3,14 +3,15 @@ Partial JS
 
 __[demo](https://partialjs.herokuapp.com/)__
 
- 1. A ng-include replacement 
+ 1. A ng-include replacement
  2. Simple declarative syntax.
  3. Support Inline JS Inside template
  4. Support Script Tags with Src Attribute
- 5. Zero dependencies
- 6. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
+ 5. Control over script execution with noscript Attribute
+ 6. Zero dependencies
+ 7. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
 
-  
+
 
 ```
     <partial src="templates/header.html"></partial>`
@@ -22,7 +23,7 @@ or
 ```
 
 
-More complex 
+More complex
 
 ```
 HTML
@@ -34,7 +35,7 @@ HTML
     <a href="pages/page1.html" class="list-group-item">About</a>
     <a href="pages/page2.html" class="list-group-item">Contact</a>
     <a href="pages/page3.html" class="list-group-item">Other Links</a>
-    
+
     </div>
 
 ```
@@ -53,18 +54,18 @@ JAVASCRIPT
         $(this).addClass('active');
 
     });
-    
+
 
 ```
 
- - Simple to use 
+ - Simple to use
  - can do what ng-include dose but without angular
- - 3kb normal side 
+ - 3kb normal side
  - 2kb minified
 
 
  How to use ?
 
- npm install 
+ npm install
 
- run.bat 
+ run.bat

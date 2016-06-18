@@ -1,7 +1,5 @@
 var partial = (function () {
     var partials = document.getElementsByTagName("partial");
-    console.log(partials.length);
-
 
     var getPage = function (url, elem, callback) {
         var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
@@ -9,13 +7,16 @@ var partial = (function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState > 3 && xhr.status == 200) {
                 elem.innerHTML = xhr.responseText;
-                var scripts = elem.getElementsByTagName('script');
-                for (var ix = 0; ix < scripts.length; ix++) {
-                    var src  = scripts[ix].getAttribute('src');
-                    if(src)
-                        getScript(src);
-                    else
-                        eval(scripts[ix].text);
+                var noScript = elem.getAttribute('noscript');
+              if(noScript == undefined || noScript == 'false')  {
+                  var scripts = elem.getElementsByTagName('script');
+                  for (var ix = 0; ix < scripts.length; ix++) {
+                      var src  = scripts[ix].getAttribute('src');
+                      if(src)
+                          getScript(src);
+                      else
+                          eval(scripts[ix].text);
+                  }
                 }
                 if (callback !== undefined) {
                     callback(elem);
@@ -47,6 +48,7 @@ var partial = (function () {
 
         var src = item.getAttribute('src');
         var func = item.getAttribute('onload');
+
         func = eval(func);
 
         if (func == null || func == undefined)
@@ -60,4 +62,3 @@ var partial = (function () {
         getPage: getPage
     }
 })();
-
