@@ -1,0 +1,80 @@
+
+<h2>Getting started</h2>
+<code>
+    <pre>
+    &lt;!-- just before the body end include partial js and you are good to go --&gt
+      &lt;script src=&quot;js/partial.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+    </pre> </code>
+
+<code>
+  <h2>  Simple example </h2>
+<pre>
+    &lt;partial src=&quot;templates/header.html&quot;&gt;&lt;/partial&gt;
+</pre>
+<code>
+    </br>
+
+<code>
+
+ <h2>   Example with onload method</h2>
+<pre>
+     &lt;partial src=&quot;templates/footer.html&quot; onload=&quot;Footerloaded&quot;&gt;&lt;/partial&gt;
+</pre>
+</code>
+</br>
+<code>
+   <h2> NoScript attribute example </h2>
+     <pre>
+   
+     &lt;partial src=&quot;templates/header.html&quot; noscript=&quot;true&quot;&gt;&lt;/partial&gt;
+
+     &lt;partial src=&quot;templates/header.html&quot; noscript&gt;&lt;/partial&gt;
+     </pre>
+</code>
+</br>
+More complex example with manual loading of pages with javascript
+</br>
+    <br>
+    <code>
+        <h2>Loads the partial after a sepecified delay</h2>
+        <pre>
+         &lt;partial src=&quot;templates/menu.html&quot; loadafter=&quot;3000&quot;&gt;&lt;/partial&gt;
+        </pre>
+    </code>
+
+<code>
+<h2>HTML</h2>
+<pre>
+
+    &lt;div id=&quot;menu&quot; class=&quot;list-group&quot;&gt; 
+    &lt;a href=&quot;pages/index.html&quot; class=&quot;list-group-item active&quot;&gt;
+        Home
+    &lt;/a&gt;
+    &lt;a href=&quot;pages/page1.html&quot; class=&quot;list-group-item&quot;&gt;About&lt;/a&gt;
+    &lt;a href=&quot;pages/page2.html&quot; class=&quot;list-group-item&quot;&gt;Contact&lt;/a&gt;
+    &lt;a href=&quot;pages/page3.html&quot; class=&quot;list-group-item&quot;&gt;Other Links&lt;/a&gt;
+
+    &lt;/div&gt;
+</pre>
+</code>
+<code>
+
+<h2>JAVASCRIPT</h2>
+<pre>
+    $('#menu a').click(function (e) {
+        e.preventDefault();
+        var path = $(this).prop('href');
+        var container = document.getElementById('view');
+        partial.getPage(path, container, function (elem) {
+            Prism.highlightAll();
+        });
+        $('.active').removeClass('active');
+        $(this).addClass('active');
+
+    });
+
+</pre>
+</code>

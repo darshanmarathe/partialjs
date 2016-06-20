@@ -25,6 +25,17 @@ __[demo](https://partialjs.herokuapp.com/)__
 3. Support for autorefresh number of tim3s
 
 
+##Gettting started 
+
+```
+<!-- just before the body end include partial js and you are good to go -->
+     <script src="js/partial.min.js"></script>
+
+</body>
+
+```
+
+
 ```
     <partial src="templates/header.html"></partial>`
 ```
