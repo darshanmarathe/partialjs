@@ -29,7 +29,15 @@ var partial = (function () {
         return xhr;
     }
 
-
+function LoadAfterDelay(func, item , src , loadafter) {
+    setTimeout(function () {
+        func = eval(func);
+        if (func == null || func == undefined)
+            getPage(src, item);
+        else
+            getPage(src, item, func)
+    } , loadafter )
+}
     var getScript = function (url){
         var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('GET', url);
@@ -48,13 +56,20 @@ var partial = (function () {
 
         var src = item.getAttribute('src');
         var func = item.getAttribute('onload');
+        var loadafter = item.getAttribute('loadafter');
+        if(loadafter ===undefined || loadafter === null){
+            loadafter = 0;
+        }
+        else{
+            if (isNaN(loadafter))
+                loadafter = 0;
+            else
+                loadafter = parseInt(loadafter)
 
-        func = eval(func);
+        }
 
-        if (func == null || func == undefined)
-            getPage(src, item);
-        else
-            getPage(src, item, func)
+        LoadAfterDelay(func , item , src , loadafter);
+
     }
 
 

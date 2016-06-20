@@ -16,10 +16,19 @@ __[demo](https://partialjs.herokuapp.com/)__
 ```
     <partial src="templates/header.html"></partial>`
 ```
-or
+or call a function onload
 
 ```
     <partial src="templates/footer.html" onload="Footerloaded"></partial>
+```
+
+or load after specific delay
+```
+    <partial src="templates/menu.html" loadafter="3000"></partial>`
+```
+or block a script execution with noscript="true"
+```
+    <partial src="templates/menu.html"  noscript="true"></partial>`
 ```
 
 
