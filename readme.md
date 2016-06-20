@@ -4,18 +4,18 @@ Partial JS
 __[demo](https://partialjs.herokuapp.com/)__
 
 #Features
- 1. A ng-include replacement
+ 1. A ng-include alternative
  2. Simple declarative syntax.
- 3. Support Inline JS Inside template
- 4. Support Script Tags with Src Attribute
- 5. Control over script execution with noscript Attribute
- 6. You can delay the loading with loadafter attribute
+ 3. Supporting Inline JS Inside remote template
+ 4. Supporting Script Tags with Src Attribute Inside remote templates
+ 5. Full control over script execution with noscript Attribute
+ 6. You can delay loading with loadafter attribute for any remote tempate
  7. Support for nested partial tags
  8. Zero dependencies
  9. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
  10. Simple to use
  11. can do what ng-include dose but without angular
- 12. 3kb normal side
+ 12. 3kb normal size 
  13. 2kb minified
 
 
