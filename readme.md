@@ -10,19 +10,19 @@ __[demo](https://partialjs.herokuapp.com/)__
  4. Support Script Tags with Src Attribute
  5. Control over script execution with noscript Attribute
  6. You can delay the loading with loadafter attribute
- 6. Zero dependencies
- 7. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
- 8. Simple to use
- 9. can do what ng-include dose but without angular
- 10. 3kb normal side
- 11. 2kb minified
+ 7. Support for nested partial tags
+ 8. Zero dependencies
+ 9. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
+ 10. Simple to use
+ 11. can do what ng-include dose but without angular
+ 12. 3kb normal side
+ 13. 2kb minified
 
 
 
 #Roadmap
 1. Support for autorefresh
-2. Support for nested partial tags
-3. Support for autorefresh number of tim3s
+2. Support for autorefresh number of tim3s
 
 
 ##Gettting started 
