@@ -32,6 +32,21 @@ var partial = (function () {
         return xhr;
     }
 
+    var reload = function(id){
+        var elem  =  document.querySelectorAll(id)[0];
+        var url = "";
+        var func = undefined;
+        if (elem != undefined || elem != null){
+            url  = elem.getAttribute('src');
+            func = elem.getAttribute('onload');
+           
+        }
+
+        LoadAfterDelay(func, elem, url, 0);
+
+        
+    }
+
 
     var LoadPartials = function (partials) {
         for (var index = 0; index < partials.length; ++index) {
@@ -77,17 +92,14 @@ var partial = (function () {
                 getPage(src, item, func)
         }, loadafter)
     }
+
     var partials = document.getElementsByTagName("partial");
-   if (partials.length != 0)
-    LoadPartials(partials);
-
-
-
-
-
+    if (partials.length != 0)
+        LoadPartials(partials);
 
     return {
-        getPage: getPage
+        getPage: getPage,
+        reload : reload
     }
 
 
