@@ -44,6 +44,15 @@ More complex example with manual loading of pages with javascript
          &lt;partial src=&quot;templates/menu.html&quot; loadafter=&quot;3000&quot;&gt;&lt;/partial&gt;
         </pre>
     </code>
+</br>
+    <br>
+    <code>
+        <h2>Auto refresh partial after a sepecified timer</h2>
+        <pre>
+         &lt;partial src=&quot;templates/menu.html&quot; autorefresh=&quot;3000&quot;&gt;&lt;/partial&gt;
+        </pre>
+    </code>
+
 
 <code>
 <h2>HTML</h2>
@@ -62,7 +71,7 @@ More complex example with manual loading of pages with javascript
 </code>
 <code>
 
-<h2>JAVASCRIPT</h2>
+<h2>JAVASCRIPT API</h2>
 <pre>
     $('#menu a').click(function (e) {
         e.preventDefault();
@@ -75,6 +84,17 @@ More complex example with manual loading of pages with javascript
         $(this).addClass('active');
 
     });
+
+    //reloads based on id
+    partial.reload('#container');
+
+
+    //reloads based on class 
+    partial.reload('.ADcontainer');
+
+
+    //reloads all
+    partial.reload('partial')
 
 </pre>
 </code>

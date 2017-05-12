@@ -32,19 +32,19 @@ var partial = (function () {
         return xhr;
     }
 
-    var reload = function(id){
-        var elem  =  document.querySelectorAll(id)[0];
+    var reload = function (id) {
+        var elem = document.querySelectorAll(id)[0];
         var url = "";
         var func = undefined;
-        if (elem != undefined || elem != null){
-            url  = elem.getAttribute('src');
+        if (elem != undefined || elem != null) {
+            url = elem.getAttribute('src');
             func = elem.getAttribute('onload');
-           
+
         }
 
         LoadAfterDelay(func, elem, url, 0);
 
-        
+
     }
 
 
@@ -55,6 +55,8 @@ var partial = (function () {
             var src = item.getAttribute('src');
             var func = item.getAttribute('onload');
             var loadafter = item.getAttribute('loadafter');
+            var autorefresh = item.getAttribute('autorefresh');
+
             if (loadafter === undefined || loadafter === null) {
                 loadafter = 0;
             }
@@ -66,8 +68,26 @@ var partial = (function () {
 
             }
 
-            LoadAfterDelay(func, item, src, loadafter);
+            if (autorefresh === undefined || autorefresh === null) {
+                autorefresh = 0;
+            }
+            else {
+                if (isNaN(autorefresh))
+                    autorefresh = 0;
+                else
+                    autorefresh = parseInt(autorefresh)
 
+            }
+            if (autorefresh > 0) {
+                loadafter = autorefresh;
+
+                setInterval(function(){
+                console.log("Autorefreshed after " + autorefresh);
+                    LoadAfterDelay(func, item, src, loadafter);
+            }, autorefresh)
+            } else {
+                LoadAfterDelay(func, item, src, loadafter);
+            }
         }
 
     }
@@ -99,7 +119,7 @@ var partial = (function () {
 
     return {
         getPage: getPage,
-        reload : reload
+        reload: reload
     }
 
 
