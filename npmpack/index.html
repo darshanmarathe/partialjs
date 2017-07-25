@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <title>Partial Js Demo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <partial src="templates/header.html" noscript="true">
+             <img src="/images/27-0.gif" alt="">
+            </partial>
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-3">
+            <partial src="templates/menu.html" loadafter="4000">
+             <img src="/images/27-0.gif" alt="">
+            </partial>
+
+        </div>
+        <div class="col-md-9">
+            <div id="view">
+<h1>Partial Js Demo</h1>
+<hr>
+<a href="https://github.com/darshanmarathe/partialjs">Download</a>
+<br>
+    
+                    <img src="/images/27-0.gif" alt="">
+          
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <partial src="templates/footer.html" onload="Footerloaded">
+             <img src="/images/27-0.gif" alt="">
+            </partial>
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.0.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+
+        function Footerloaded(){
+            console.log('onload event code works');
+        }
+
+
+
+    </script>
+    <script src="js/partial.js"></script>
+
+</body>
+
+</html>

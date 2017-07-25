@@ -1,0 +1,23 @@
+{
+  "name": "partialjs",
+  "version": "1.0.0",
+  "description": "partialjs is client-only component which allows you to create and breck your templates without adding heavy frameworks\"",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darshanmarathe/partialjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/darshanmarathe/partialjs/issues"
+  },
+  "homepage": "https://github.com/darshanmarathe/partialjs#readme",
+
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "keywords": [
+    "partialjs"
+  ],
+  "author": "Darshan Marathe",
+  "license": "MIT "
+}
