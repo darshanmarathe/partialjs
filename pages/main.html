@@ -1,3 +1,18 @@
+
+<script type="text/javascript" >
+    var RoadmapLoaded = function () {
+        console.log('yes onload works with inside tags too' + Math.random())
+    }
+
+
+
+    var autorefreshDone = function () {
+        console.log('yes autorefreshDone works with inside tags too' + Math.random())
+    }
+
+
+</script>
+
 <h1>Partial Js Demo</h1>
 
 <hr>
@@ -27,7 +42,7 @@
 </ul>
 
 
-<partial src="pages/roadmap.html" onlsoad="RoadmapLoaded" loadafter="1000" id="roadmap">
+<partial src="pages/roadmap.html" onload="RoadmapLoaded" loadafter="3000" id="roadmap">
 
     <img src="/images/27-0.gif" alt="">
     <br>
@@ -38,7 +53,7 @@
 
 <input type="button" value="Reload"  onclick="partial.reload('#roadmap');" />
 
-<partial src="pages/timer.html"  autorefresh="5000" >
+<partial src="pages/timer.html"  autorefresh="5000" onload="autorefreshDone" >
 <h1>Auto refreshed content after 5 sec</h1>
     <img src="/images/27-0.gif" alt="">
     <br>
@@ -60,9 +75,3 @@ or on linux based systems
 
 sh run.sh
 
-<script>
-
-    function RoadmapLoaded(){
-        console.log('yes onload works with inside tags too' + Math.random())
-    }
-</script>

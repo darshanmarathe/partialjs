@@ -7,15 +7,16 @@ var partial = (function () {
             if (xhr.readyState > 3 && xhr.status == 200) {
                 elem.innerHTML = xhr.responseText;
                 var noScript = elem.getAttribute('noscript');
-                if (noScript == undefined || noScript == 'false') {
+                if (noScript == undefined || noScript == null ||  noScript == 'false') {
                     var scripts = elem.getElementsByTagName('script');
                     for (var ix = 0; ix < scripts.length; ix++) {
                         var src = scripts[ix].getAttribute('src');
                         if (src)
                             getScript(src);
                         else
-                            eval(scripts[ix].text);
-                    }
+                            var code = scripts[ix].text;
+                                window.eval(code);
+                        }
                     var _partials = elem.getElementsByTagName('partial');
                     if (_partials.length != 0)
                         LoadPartials(_partials);
@@ -24,8 +25,7 @@ var partial = (function () {
                 if (callback !== undefined) {
                     callback(elem);
                 }
-            }
-            ;
+            };
         };
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send();
@@ -59,8 +59,7 @@ var partial = (function () {
 
             if (loadafter === undefined || loadafter === null) {
                 loadafter = 0;
-            }
-            else {
+            } else {
                 if (isNaN(loadafter))
                     loadafter = 0;
                 else
@@ -70,8 +69,7 @@ var partial = (function () {
 
             if (autorefresh === undefined || autorefresh === null) {
                 autorefresh = 0;
-            }
-            else {
+            } else {
                 if (isNaN(autorefresh))
                     autorefresh = 0;
                 else
@@ -81,10 +79,9 @@ var partial = (function () {
             if (autorefresh > 0) {
                 loadafter = autorefresh;
 
-                setInterval(function(){
-                console.log("Autorefreshed after " + autorefresh);
+                setInterval(function () {
                     LoadAfterDelay(func, item, src, loadafter);
-            }, autorefresh)
+                }, autorefresh)
             } else {
                 LoadAfterDelay(func, item, src, loadafter);
             }
