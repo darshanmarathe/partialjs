@@ -17,6 +17,12 @@
     loadNow = !loadNow;
   }
 
+  var loadedtimes = 0;
+  function AddLoaded(elem , data){
+    loadedtimes++;
+    elem.innerHTML = elem.innerHTML.replace('__loadedtimes__' , loadedtimes.toString());
+    console.log(loadedtimes , elem, data)
+  }
 </script>
 
 <h1>Partial Js Demo</h1>
@@ -68,8 +74,9 @@
 </partial>
 
 <h1>Ajax and template demo</h1>
-<partial src="colors.json" ajax="true" autorefresh="10000">
+<partial src="colors.json" loadIf="loadedtimes < 4" onload="AddLoaded" ajax="true" autorefresh="10000">
   <template>
+    loaded times __loadedtimes__
 {{#grouped_each 3 colors}}
   <div class="row">
     {{#each this }}
@@ -78,7 +85,7 @@
         <strong>{{color}}</strong><br>
         {{code.hex}}<br>
         {{code.rgb}}
-        <partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="{{timeout}}" id="roadmap">
+        <partial src="pages/roadmap.html"  loadafter="{{timeout}}">
             <img src="/images/27-0.gif" alt="">
         </partial>
       </a>
