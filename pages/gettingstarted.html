@@ -102,6 +102,9 @@
 </pre>
 
 <pre>
+
+
+  //Handlebar helper
   Handlebars.registerHelper('grouped_each', function(every, context, options) {
     var out = "", subcontext = [], i;
     if (context && context.length > 0) {
@@ -116,6 +119,18 @@
     }
     return out;
   });
+
+
+  //Code to load only 5 times
+
+
+  var loadedtimes = 0;
+  //runs on every onload method
+  function AddLoaded(elem , data){
+    loadedtimes++;
+    elem.innerHTML = elem.innerHTML.replace('__loadedtimes__' , loadedtimes.toString());
+    console.log(loadedtimes , elem, data)
+  }
 </pre>
 </code>
 More complex example with manual loading of pages with javascript
