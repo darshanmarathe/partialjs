@@ -47,7 +47,6 @@
 
 </ul>
 
-
 <partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="3000" id="roadmap">
 
     <img src="/images/27-0.gif" alt="">
@@ -56,18 +55,35 @@
 </partial>
 
 
-
 <input type="button" value="Reload"  onclick="partial.reload('#roadmap');" />
 <input type="button" value="Start/Stop (loadIf)"  onclick="shutdown()" />
 
-<partial src="pages/timer.html" loadIf="loadNow"  autorefresh="1000" onload="autorefreshDone" >
-<h1>Auto refreshed content after 5 sec</h1>
+<partial src="pages/timer.html" loadIf="loadNow"  autorefresh="2000" onload="autorefreshDone">
     <img src="/images/27-0.gif" alt="">
+    <h1>Auto refreshed content after 5 sec</h1>
     <br>
     <br>
-</partial>  
+</partial>
 
+<h1>Ajax and template demo</h1>
+<partial src="colors.json" ajax="true" autorefresh="5000">
+  <template>
+    {{#each colors}}
+<div style="border:1px solid black">
+  <h2><span style="color:{{code.hex}}">{{color}}</span></h2>
+  <div>{{category}}</div>
+  <partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="{{timeout}}" id="roadmap">
 
+      <img src="/images/27-0.gif" alt="">
+      <br>
+      <br>
+  </partial>
+
+</div>
+  {{/each}}
+  </template>
+
+</partial>
 
 How to use ? </br>
 
