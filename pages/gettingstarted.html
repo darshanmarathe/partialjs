@@ -36,21 +36,6 @@
 </code>
 </br>
 
-<code>
-   <h2> LoadIf </h2>
-     <pre>
-  Check if variable is true
-  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;true&quot;&gt;&lt;/partial&gt;
-
-  Check a expression
-  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;item < 5&quot;&gt;&lt;/partial&gt;
-
-  Check a result of a function
-  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;CheckUserExist()&quot;&gt;&lt;/partial&gt;
-     </pre>
-</code>
-More complex example with manual loading of pages with javascript
-</br>
     <br>
     <code>
         <h2>Loads the partial after a sepecified delay</h2>
@@ -67,6 +52,73 @@ More complex example with manual loading of pages with javascript
         </pre>
     </code>
 
+<br>
+<code>
+   <h2> LoadIf </h2>
+     <pre>
+  Check if variable is true
+  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;true&quot;&gt;&lt;/partial&gt;
+
+  Check a expression
+  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;item < 5&quot;&gt;&lt;/partial&gt;
+
+  Check a result of a function
+  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;CheckUserExist()&quot;&gt;&lt;/partial&gt;
+     </pre>
+</code>
+
+
+<br>
+<code>
+<h2>Ajax and templating</h2>
+<pre>
+  &lt;h1&gt;Ajax and template demo&lt;/h1&gt;
+  &lt;partial src=&quot;colors.json&quot; ajax=&quot;true&quot; autorefresh=&quot;10000&quot;&gt;
+    &lt;template&gt;
+  {{#grouped_each 3 colors}}
+    &lt;div class=&quot;row&quot;&gt;
+      {{#each this }}
+        &lt;div class=&quot;col-sm-4 item&quot; &gt;
+          &lt;a href=&quot;#&quot; class=&quot;thumbnail&quot; style=&quot;color:{{code.hex}};background-color:gray&quot;&gt;
+          &lt;strong&gt;{{color}}&lt;/strong&gt;&lt;br&gt;
+          {{code.hex}}&lt;br&gt;
+          {{code.rgb}}
+          &lt;partial src=&quot;pages/roadmap.html&quot;  onload=&quot;RoadmapLoaded&quot; loadafter=&quot;{{timeout}}&quot; id=&quot;roadmap&quot;&gt;
+              &lt;img src=&quot;/images/27-0.gif&quot; alt=&quot;&quot;&gt;
+          &lt;/partial&gt;
+        &lt;/a&gt;
+        &lt;/div&gt;
+      {{/each}}
+    &lt;/div&gt;
+  {{/grouped_each}}
+    &lt;/template&gt;
+    <b>View is optional if not there partial.js will generate it </b>
+    &lt;view&gt;
+      &lt;img src=&quot;/images/27-0.gif&quot; alt=&quot;loading&quot; /&gt;&lt;br&gt;
+     &amp;nbsp;&amp;nbsp; Loading example with AJAX in next 10 seconds
+      &lt;br&gt;
+    &lt;/view&gt;
+  &lt;/partial&gt;
+</pre>
+
+<pre>
+  Handlebars.registerHelper('grouped_each', function(every, context, options) {
+    var out = "", subcontext = [], i;
+    if (context && context.length > 0) {
+        for (i = 0; i < context.length; i++) {
+            if (i > 0 && i % every === 0) {
+                out += options.fn(subcontext);
+                subcontext = [];
+            }
+            subcontext.push(context[i]);
+        }
+        out += options.fn(subcontext);
+    }
+    return out;
+  });
+</pre>
+</code>
+More complex example with manual loading of pages with javascript
 
 <code>
 <h2>HTML</h2>

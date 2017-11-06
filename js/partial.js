@@ -84,7 +84,7 @@ var partial = (function () {
             var func = item.getAttribute('onload');
             var loadafter = item.getAttribute('loadafter');
             var autorefresh = item.getAttribute('autorefresh');
-
+            var isLoadafter=false;
 
             if (loadafter === undefined || loadafter === null) {
                 loadafter = 0;
@@ -93,7 +93,7 @@ var partial = (function () {
                     loadafter = 0;
                 else
                     loadafter = parseInt(loadafter)
-
+                    isLoadafter = true;
             }
 
             if (autorefresh === undefined || autorefresh === null) {
@@ -107,10 +107,10 @@ var partial = (function () {
             }
               if (autorefresh > 0) {
                   loadafter = autorefresh;
-                //  setInterval(function(_func, _item, _src, _loadafter) {
-                  //    LoadAfterDelay(_func, _item, _src, _loadafter);
-                  //}(func, item, src, loadafter), autorefresh)
                   setInterval(LoadAfterDelay , loadafter , func, item, src, loadafter);
+                  if(!isLoadafter){
+                    LoadAfterDelay(func, item, src, 0)
+                  }
               } else {
                   LoadAfterDelay(func, item, src, loadafter);
               }

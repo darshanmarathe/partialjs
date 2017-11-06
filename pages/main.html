@@ -38,12 +38,14 @@
     <li>Reload Api if you wish to reload a partial programitclly</li>
     <li>Full control over script execution with noscript Attribute</li>
     <li>Support for nested partial tags</li>
+    <li>Support for LoadIf just like ng-show</li>
+    <li>Support for Ajax 0 code with Handlebars.js templating</li>
     <li>Zero dependencies</li>
     <li>Works on IE9+,Chrome,Opera,Firefox and all mobile browsers</li>
     <li>Simple to use</li>
     <li>can do what ng-include does and more but without angular</li>
-    <li>3kb normal size</li>
-    <li>2kb minified</li>
+    <li>4.21 KB normal size</li>
+    <li>2.29 KB minified</li>
 
 </ul>
 
@@ -66,23 +68,30 @@
 </partial>
 
 <h1>Ajax and template demo</h1>
-<partial src="colors.json" ajax="true" autorefresh="5000">
+<partial src="colors.json" ajax="true" autorefresh="10000">
   <template>
-    {{#each colors}}
-<div style="border:1px solid black">
-  <h2><span style="color:{{code.hex}}">{{color}}</span></h2>
-  <div>{{category}}</div>
-  <partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="{{timeout}}" id="roadmap">
-
-      <img src="/images/27-0.gif" alt="">
-      <br>
-      <br>
-  </partial>
-
-</div>
-  {{/each}}
+{{#grouped_each 3 colors}}
+  <div class="row">
+    {{#each this }}
+      <div class="col-sm-4 item" >
+        <a href="#" class="thumbnail" style="color:{{code.hex}};background-color:gray">
+        <strong>{{color}}</strong><br>
+        {{code.hex}}<br>
+        {{code.rgb}}
+        <partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="{{timeout}}" id="roadmap">
+            <img src="/images/27-0.gif" alt="">
+        </partial>
+      </a>
+      </div>
+    {{/each}}
+  </div>
+{{/grouped_each}}
   </template>
-
+  <view>
+    <img src="/images/27-0.gif" alt="loading" /><br>
+   &nbsp;&nbsp; Loading example with AJAX in next 10 seconds
+    <br>
+  </view>
 </partial>
 
 How to use ? </br>

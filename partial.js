@@ -5,8 +5,13 @@ var partial = (function () {
         xhr.open('GET', url);
         xhr.onreadystatechange = function () {
             if (xhr.readyState > 3 && xhr.status == 200) {
-                elem.innerHTML = xhr.responseText;
                 var noScript = elem.getAttribute('noscript');
+                var ajax = elem.getAttribute("ajax");
+                if(ajax != undefined){
+                  HandleAjax(elem , JSON.parse(xhr.responseText));
+                  return;
+                }
+                elem.innerHTML = xhr.responseText;
                 if (noScript == undefined || noScript == null ||  noScript == 'false') {
                     var scripts = elem.getElementsByTagName('script');
                     for (var ix = 0; ix < scripts.length; ix++) {
@@ -32,6 +37,29 @@ var partial = (function () {
         return xhr;
     }
 
+    var HandleAjax = function(elem , context){
+      var template = elem.querySelectorAll('template');
+      if(template.length ==0){
+        throw("Need a template tag inside partial for supporting ajax");
+      }
+      var source   = template[0].innerHTML;
+      template = Handlebars.compile(source);
+      var view  = elem.querySelectorAll('view');
+          if(view.length == 0){
+                  view = document.createElement("view");
+                  elem.appendChild(view);
+          }
+          else {
+              view = view[0];
+          }
+
+          view.innerHTML = template(context);
+         var _partials =  view.getElementsByTagName('partial');
+          if (_partials.length != 0)
+              LoadPartials(_partials);
+
+  }
+
     var reload = function (id) {
         var elem = document.querySelectorAll(id)[0];
         var url = "";
@@ -56,7 +84,7 @@ var partial = (function () {
             var func = item.getAttribute('onload');
             var loadafter = item.getAttribute('loadafter');
             var autorefresh = item.getAttribute('autorefresh');
-
+            var isLoadafter=false;
 
             if (loadafter === undefined || loadafter === null) {
                 loadafter = 0;
@@ -65,7 +93,7 @@ var partial = (function () {
                     loadafter = 0;
                 else
                     loadafter = parseInt(loadafter)
-
+                    isLoadafter = true;
             }
 
             if (autorefresh === undefined || autorefresh === null) {
@@ -79,9 +107,10 @@ var partial = (function () {
             }
               if (autorefresh > 0) {
                   loadafter = autorefresh;
-                  setInterval(function () {
-                      LoadAfterDelay(func, item, src, loadafter);
-                  }, autorefresh)
+                  setInterval(LoadAfterDelay , loadafter , func, item, src, loadafter);
+                  if(!isLoadafter){
+                    LoadAfterDelay(func, item, src, 0)
+                  }
               } else {
                   LoadAfterDelay(func, item, src, loadafter);
               }
