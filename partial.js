@@ -8,7 +8,7 @@ var partial = (function () {
                 var noScript = elem.getAttribute('noscript');
                 var ajax = elem.getAttribute("ajax");
                 if(ajax != undefined){
-                  HandleAjax(elem , JSON.parse(xhr.responseText));
+                  HandleAjax(elem , JSON.parse(xhr.responseText), callback);
                   return;
                 }
                 elem.innerHTML = xhr.responseText;
@@ -37,7 +37,7 @@ var partial = (function () {
         return xhr;
     }
 
-    var HandleAjax = function(elem , context){
+    var HandleAjax = function(elem , context, callback){
       var template = elem.querySelectorAll('template');
       if(template.length ==0){
         throw("Need a template tag inside partial for supporting ajax");
@@ -54,9 +54,14 @@ var partial = (function () {
           }
 
           view.innerHTML = template(context);
+          if (callback !== undefined) {
+              callback(view , context);
+          }
+
          var _partials =  view.getElementsByTagName('partial');
-          if (_partials.length != 0)
+         if (_partials.length != 0)
               LoadPartials(_partials);
+
 
   }
 
