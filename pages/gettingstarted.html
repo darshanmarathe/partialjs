@@ -28,13 +28,27 @@
 <code>
    <h2> NoScript attribute example </h2>
      <pre>
-   
+
      &lt;partial src=&quot;templates/header.html&quot; noscript=&quot;true&quot;&gt;&lt;/partial&gt;
 
      &lt;partial src=&quot;templates/header.html&quot; noscript&gt;&lt;/partial&gt;
      </pre>
 </code>
 </br>
+
+<code>
+   <h2> LoadIf </h2>
+     <pre>
+  Check if variable is true
+  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;true&quot;&gt;&lt;/partial&gt;
+
+  Check a expression
+  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;item < 5&quot;&gt;&lt;/partial&gt;
+
+  Check a result of a function
+  &lt;partial src=&quot;templates/header.html&quot; loadif=&quot;CheckUserExist()&quot;&gt;&lt;/partial&gt;
+     </pre>
+</code>
 More complex example with manual loading of pages with javascript
 </br>
     <br>
@@ -58,7 +72,7 @@ More complex example with manual loading of pages with javascript
 <h2>HTML</h2>
 <pre>
 
-    &lt;div id=&quot;menu&quot; class=&quot;list-group&quot;&gt; 
+    &lt;div id=&quot;menu&quot; class=&quot;list-group&quot;&gt;
     &lt;a href=&quot;pages/index.html&quot; class=&quot;list-group-item active&quot;&gt;
         Home
     &lt;/a&gt;
@@ -89,7 +103,7 @@ More complex example with manual loading of pages with javascript
     partial.reload('#container');
 
 
-    //reloads based on class 
+    //reloads based on class
     partial.reload('.ADcontainer');
 
 

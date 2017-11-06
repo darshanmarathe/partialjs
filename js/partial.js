@@ -57,6 +57,7 @@ var partial = (function () {
             var loadafter = item.getAttribute('loadafter');
             var autorefresh = item.getAttribute('autorefresh');
 
+
             if (loadafter === undefined || loadafter === null) {
                 loadafter = 0;
             } else {
@@ -76,15 +77,14 @@ var partial = (function () {
                     autorefresh = parseInt(autorefresh)
 
             }
-            if (autorefresh > 0) {
-                loadafter = autorefresh;
-
-                setInterval(function () {
-                    LoadAfterDelay(func, item, src, loadafter);
-                }, autorefresh)
-            } else {
-                LoadAfterDelay(func, item, src, loadafter);
-            }
+              if (autorefresh > 0) {
+                  loadafter = autorefresh;
+                  setInterval(function () {
+                      LoadAfterDelay(func, item, src, loadafter);
+                  }, autorefresh)
+              } else {
+                  LoadAfterDelay(func, item, src, loadafter);
+              }
         }
 
     }
@@ -101,6 +101,9 @@ var partial = (function () {
         return xhr;
     }
     var LoadAfterDelay = function (func, item, src, loadafter) {
+    var loadIf = item.getAttribute('loadIf') == undefined ? true : eval(item.getAttribute('loadIf'));
+    if(loadIf)
+    {
         setTimeout(function () {
             func = eval(func);
             if (func == null || func == undefined)
@@ -108,6 +111,7 @@ var partial = (function () {
             else
                 getPage(src, item, func)
         }, loadafter)
+      }
     }
 
     var partials = document.getElementsByTagName("partial");

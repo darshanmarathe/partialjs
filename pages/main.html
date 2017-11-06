@@ -11,6 +11,12 @@
     }
 
 
+  var loadNow = true;
+
+  function shutdown(){
+    loadNow = !loadNow;
+  }
+
 </script>
 
 <h1>Partial Js Demo</h1>
@@ -42,7 +48,7 @@
 </ul>
 
 
-<partial src="pages/roadmap.html" onload="RoadmapLoaded" loadafter="3000" id="roadmap">
+<partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="3000" id="roadmap">
 
     <img src="/images/27-0.gif" alt="">
     <br>
@@ -52,8 +58,9 @@
 
 
 <input type="button" value="Reload"  onclick="partial.reload('#roadmap');" />
+<input type="button" value="Start/Stop (loadIf)"  onclick="shutdown()" />
 
-<partial src="pages/timer.html"  autorefresh="5000" onload="autorefreshDone" >
+<partial src="pages/timer.html" loadIf="loadNow"  autorefresh="1000" onload="autorefreshDone" >
 <h1>Auto refreshed content after 5 sec</h1>
     <img src="/images/27-0.gif" alt="">
     <br>
@@ -74,4 +81,3 @@ run.bat
 or on linux based systems
 
 sh run.sh
-
