@@ -73,7 +73,7 @@
 <h2>Ajax and templating</h2>
 <pre>
   &lt;h1&gt;Ajax and template demo&lt;/h1&gt;
-  &lt;partial src=&quot;colors.json&quot; ajax=&quot;true&quot; autorefresh=&quot;10000&quot;&gt;
+  &lt;partial src=&quot;colors.json&quot; ajax=&quot;true&quot; loadIf=&quot;loadedtimes < 4&quot; onload=&quot;AddLoaded&quot; autorefresh=&quot;10000&quot;&gt;
     &lt;template&gt;
   {{#grouped_each 3 colors}}
     &lt;div class=&quot;row&quot;&gt;
