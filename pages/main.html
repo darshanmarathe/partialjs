@@ -76,7 +76,7 @@
 <h1>Ajax and template demo</h1>
 <partial src="colors.json" loadIf="loadedtimes < 4" onload="AddLoaded" ajax="true" autorefresh="10000">
   <template>
-    loaded times __loadedtimes__
+    loaded times __loadedtimes__ / 5
 {{#grouped_each 3 colors}}
   <div class="row">
     {{#each this }}
