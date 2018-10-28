@@ -100,7 +100,30 @@
     <br>
   </view>
 </partial>
+<h1>Base Url Demo</h1>
+<partial baseurl="https://jsonplaceholder.typicode.com" ajax="tru" src="/photos">
+  <template>
+    {{#grouped_each 6 this}}
+    <div class="row">
+      {{#each this }}
+        <div class="col-sm-2 item" >
+          <a href="{{url}}" class="thumbnail">
+          <strong>{{title}}</strong><br>
+          <img src="{{thumbnailUrl}}" />
+        </a>
+        </div>
+      {{/each}}
+    </div>
+  {{/grouped_each}}
+      
+  </template>
+  <view>
 
+  </view>
+  <script>
+  
+  </script>
+</partial>
 How to use ? </br>
 
 npm install </br>

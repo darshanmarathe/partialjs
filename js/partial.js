@@ -1,5 +1,5 @@
 var partial = (function () {
-
+    var baseUrl ="";
     var getPage = function (url, elem, callback) {
         var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('GET', url);
@@ -7,11 +7,14 @@ var partial = (function () {
             if (xhr.readyState > 3 && xhr.status == 200) {
                 var noScript = elem.getAttribute('noscript');
                 var ajax = elem.getAttribute("ajax");
+             
                 if(ajax != undefined){
                   HandleAjax(elem , JSON.parse(xhr.responseText), callback);
                   return;
                 }
+                
                 elem.innerHTML = xhr.responseText;
+                
                 if (noScript == undefined || noScript == null ||  noScript == 'false') {
                     var scripts = elem.getElementsByTagName('script');
                     for (var ix = 0; ix < scripts.length; ix++) {
@@ -86,6 +89,10 @@ var partial = (function () {
             var item = partials[index];
 
             var src = item.getAttribute('src');
+            baseUrl = item.getAttribute('baseurl');
+            if(baseUrl && baseUrl !== ""){
+                src = baseUrl + src;
+            }
             var func = item.getAttribute('onload');
             var loadafter = item.getAttribute('loadafter');
             var autorefresh = item.getAttribute('autorefresh');
