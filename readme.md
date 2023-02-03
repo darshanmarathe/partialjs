@@ -1,7 +1,7 @@
 Partial JS
 ----------
 
-__[demo](https://partialjs.up.railway.app//)__
+__[Demo](https://partialjs.up.railway.app/)__
 
 #Features
  1. A ng-include alternative
