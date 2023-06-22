@@ -13,6 +13,11 @@ app.use(express.static(path.join(__dirname, 'public'))); //  "public" off of cur
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
-  });
+});
 
+app.get('/custom', (req, res) => {
+    res.sendFile(__dirname + '/customTag.html');
+});
+
+console.log("serer started on " + `http://localhost:${port}`)
 app.listen(port);

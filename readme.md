@@ -11,12 +11,13 @@ __[Demo](https://partialjs.up.railway.app/)__
  5. Full control over script execution with noscript Attribute
  6. You can delay loading with loadafter attribute for any remote template
  7. Support for nested partial tags
- 8. Zero dependencies
- 9. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
- 10. Simple to use
- 11. can do what ng-include does but without angular
- 12. 3kb normal size 
- 13. 2kb minified
+ 8. Support for custom tags
+ 9. Zero dependencies
+ 10. Works on IE9+,Chrome,Opera,Firefox and all mobile browsers
+ 11. Simple to use
+ 12. can do what ng-include does but without angular
+ 13. 3kb normal size 
+ 14. 2kb minified
 
 
 

@@ -1,0 +1,138 @@
+
+<script type="text/javascript" >
+    var RoadmapLoaded = function () {
+        console.log('yes onload works with inside tags too' + Math.random())
+    }
+
+
+
+    var autorefreshDone = function () {
+        console.log('yes autorefreshDone works with inside tags too' + Math.random())
+    }
+
+
+  var loadNow = true;
+
+  function shutdown(){
+    loadNow = !loadNow;
+  }
+
+  var loadedtimes = 0;
+  function AddLoaded(elem , data){
+    loadedtimes++;
+    elem.innerHTML = elem.innerHTML.replace('__loadedtimes__' , loadedtimes.toString());
+    console.log(loadedtimes , elem, data)
+  }
+</script>
+
+<h1>Partial Js Demo</h1>
+
+<hr>
+
+
+<a href="https://github.com/darshanmarathe/partialjs">Download</a>
+<h2>Features</h2>
+<ul>
+
+
+    <li>Simple declarative syntax.</li>
+    <li>A ng-include alternative</li>
+    <li>Supporting Inline JS Inside remote template</li>
+    <li>Supporting Script Tags with Src Attribute Inside remote templates</li>
+    <li>You can delay loading with loadafter attribute for any remote template</li>
+    <li>Support for autorefresh after a specefic time</li>
+    <li>Reload Api if you wish to reload a partial programitclly</li>
+    <li>Full control over script execution with noscript Attribute</li>
+    <li>Support for nested partial tags</li>
+    <li>Support for LoadIf just like ng-show</li>
+    <li>Support for Ajax 0 code with Handlebars.js templating</li>
+    <li>Zero dependencies</li>
+    <li>Works on IE9+,Chrome,Opera,Firefox and all mobile browsers</li>
+    <li>Simple to use</li>
+    <li>can do what ng-include does and more but without angular</li>
+    <li>4.21 KB normal size</li>
+    <li>2.29 KB minified</li>
+
+</ul>
+
+<x-partial src="pages/roadmap.html"  onload="RoadmapLoaded" loadafter="3000" id="roadmap">
+
+    <img src="/images/27-0.gif" alt="">
+    <br>
+    <br>
+</x-partial>
+
+
+<input type="button" value="Reload"  onclick="partial.reload('#roadmap');" />
+<input type="button" value="Start/Stop (loadIf)"  onclick="shutdown()" />
+
+<x-partial src="pages/timer.html" loadIf="loadNow"  autorefresh="2000" onload="autorefreshDone">
+    <img src="/images/27-0.gif" alt="">
+    <h1>Auto refreshed content after 5 sec</h1>
+    <br>
+    <br>
+</x-partial>
+
+<h1>Ajax and template demo</h1>
+<x-partial src="colors.json" loadIf="loadedtimes < 4" onload="AddLoaded" ajax="true" autorefresh="10000">
+  <template>
+    loaded times __loadedtimes__ / 5
+{{#grouped_each 3 colors}}
+  <div class="row">
+    {{#each this }}
+      <div class="col-sm-4 item" >
+        <a href="#" class="thumbnail" style="color:{{code.hex}};background-color:gray">
+        <strong>{{color}}</strong><br>
+        {{code.hex}}<br>
+        {{code.rgb}}
+        <x-partial src="pages/roadmap.html"  loadafter="{{timeout}}">
+            <img src="/images/27-0.gif" alt="">
+        </x-partial>
+      </a>
+      </div>
+    {{/each}}
+  </div>
+{{/grouped_each}}
+  </template>
+  <view>
+    <img src="/images/27-0.gif" alt="loading" /><br>
+   &nbsp;&nbsp; Loading example with AJAX in next 10 seconds
+    <br>
+  </view>
+</x-partial>
+<h1>Base Url Demo</h1>
+<x-partial baseurl="https://jsonplaceholder.typicode.com" ajax="true" src="/photos">
+  <template>
+    {{#grouped_each 6 this}}
+    <div class="row">
+      {{#each this }}
+        <div class="col-sm-2 item" >
+          <a href="{{url}}" class="thumbnail">
+          <strong>{{title}}</strong><br>
+          <img src="{{thumbnailUrl}}" />
+        </a>
+        </div>
+      {{/each}}
+    </div>
+  {{/grouped_each}}
+      
+  </template>
+  <view>
+
+  </view>
+  <script>
+  
+  </script>
+</x-partial>
+How to use ? </br>
+
+npm install </br>
+npm start </br>
+
+or </br>
+
+run.bat
+
+or on linux based systems
+
+sh run.sh

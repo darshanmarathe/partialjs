@@ -16,17 +16,17 @@
   <body>
     <div class="row">
       <div class="col-md-12">
-        <partial src="templates/header.html" noscript="true">
+        <x-partial src="templates/header.html" noscript="true">
           <img src="/images/27-0.gif" alt="" />
-        </partial>
+        </x-partial>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3">
-        <partial src="templates/menu.html" loadafter="2000">
+        <x-partial src="templates/menu2.html" loadafter="2000">
           <img src="/images/27-0.gif" alt="loading" /><br />
           &nbsp;&nbsp; Loading example
-        </partial>
+        </x-partial>
       </div>
       <div class="col-md-9">
         <div id="view">
@@ -41,9 +41,9 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <partial src="templates/footer.html" onload="Footerloaded">
+        <x-partial src="templates/footer.html" onload="Footerloaded">
           <img src="/images/27-0.gif" alt="" />
-        </partial>
+        </x-partial>
       </div>
     </div>
 
@@ -56,6 +56,8 @@
     </script>
     <script src="js/partial.js"></script>
     <script type="text/javascript">
+
+        partial.SetTagName('x-partial')
       Handlebars.registerHelper(
         "grouped_each",
         function (every, context, options) {
