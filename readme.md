@@ -21,9 +21,8 @@ __[Demo](https://partialjs.up.railway.app/)__
 
 
 
-#Roadmap
-1. Support for autorefresh
-2. Support for autorefresh number of tim3s
+__[custom](https://partialjs.up.railway.app/custom)__
+
 
 
 ##Gettting started 
